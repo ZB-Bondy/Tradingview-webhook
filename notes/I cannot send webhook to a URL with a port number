@@ -1,0 +1,3 @@
+We only accept URLs with port numbers 80 and 443. Requests for the URLs with any other port number will automatically be rejected.
+
+Also note that IPv6 isn't working with webhooks at the moment, however, but we might implement this in the future.

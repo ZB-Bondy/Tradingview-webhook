@@ -1,0 +1,20 @@
+Webhook authentication
+When sending a request, the webhook server also sends an SSL certificate to the specified URL. With this certificate, you can verify that the request was actually sent by the TradingView server.
+
+Note:
+The certificate is sent only when using the HTTPS protocol. Enabling and corresponding configuration of the certificate verification is carried out entirely on the side of the webhook recipient application, and no additional actions need to be performed on the TradingView website.
+
+The authenticity of the request can be verified using the following certificate fields:
+
+Subject:
+
+C = US
+ST = Ohio
+L = Westerville
+O = TradingView, Inc.
+CN = webhook-server@tradingview.com
+Subject Alternative Name:
+
+email:webhook-server@tradingview.com
+
+https://www.tradingview.com/support/solutions/43000680459/

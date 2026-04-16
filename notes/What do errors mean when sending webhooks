@@ -1,0 +1,83 @@
+What do errors mean when sending webhooks ?
+Below are the most common errors when sending webhooks and their possible causes. Most errors are related to the receiving server. In such cases, we recommend contacting the service's support team that accepts webhooks.
+
+1. 3xx errors (Redirection) - the server indicates that the request should be sent to a different address.
+
+Possible causes:
+
+- the domain or path has changed
+
+- the server redirects to the authorization page
+
+- a proxy with redirection is configured
+
+2. 4xx errors (Client Error) - the request was sent, but the server rejected it due to problems with the parameters, data, or access.
+
+Possible causes:
+
+- endpoint does not exist
+
+- authorization error
+
+- invalid data format in the request body (invalid JSON)
+
+- exceeding the allowed number of requests to the server
+
+3. 5xx errors (Server Error) - the request is valid, but the receiving server was unable to process it.
+
+Possible causes
+
+- server temporarily unavailable
+
+- processing timeout
+
+4. Timeout exceeded (request took too long and timed out: the receiving server didn't respond to the request within 3 seconds)
+
+Possible causes:
+
+- overloaded server
+
+- network issues
+
+5. URL unavailable or invalid (this URL isn't allowed/ couldn't find this domain/ the server couldn't be reached)
+
+Possible causes:
+
+- typo in webhook URL
+
+- localhost or internal IP is used
+
+- domain not configured
+
+6. Secure connection issues (server responded over HTTP instead of HTTPS/ connection doesn't look secure/couldn't establish a secure connection)
+
+Possible causes:
+
+- incorrect TLS settings
+
+7. Server rejects or terminates the connection (server refused the connection/ server closed the connection unexpectedly/connection was closed due to inactivity)
+
+Possible causes:
+
+- server is down or overloaded
+
+- long processing time Request
+
+8. The server sent an invalid response (server sent an invalid response/ server behaved unexpectedly)
+
+Possible causes:
+
+- errors in the receiving server code
+
+9. Unknown error (something went wrong)
+
+Possible causes:
+
+- temporary failure
+
+- network problem
+
+If you have any questions, please contact support.
+
+https://www.tradingview.com/support/solutions/43000776894/
+

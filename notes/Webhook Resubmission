@@ -1,0 +1,6 @@
+Webhook resubmission
+If the receiving application returns an HTTP response status code between 500 and 599 (except for status code 504) when sending a webhook, the notification will be sent again after 5 seconds. There can be a total of 3 such resends.
+
+Thus, the maximum number of webhook sends for one trigger can be 4.
+
+https://www.tradingview.com/support/solutions/43000735201/
