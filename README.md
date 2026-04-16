@@ -251,7 +251,7 @@ This means: keep your route fast. Validate, enqueue the signal, return 200 immed
 ## Request flow
 
 ```mermaid
-graph LR
+graph TD
     A([POST /webhook]) --> B{verify_ip?}
 
     B -- yes --> C{IP in allowlist?}
