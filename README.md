@@ -245,3 +245,35 @@ Point TradingView to `http://YOUR_VPS_IP/webhook` (port 80) or your domain over 
 If your server returns a 5xx response (except 504), TradingView will retry up to 3 times (5 seconds apart), for a maximum of 4 total deliveries. Your server must respond within **3 seconds** or TradingView will cancel the request.
 
 This means: keep your route fast. Validate, enqueue the signal, return 200 immediately — do the heavy processing in a background task.
+
+---
+
+## Request flow
+
+```mermaid
+graph LR
+    A([POST /webhook]) --> B{verify_ip?}
+
+    B -- yes --> C{IP in allowlist?}
+    B -- no --> F
+
+    C -- no --> D([UnauthorizedIP])
+    C -- yes --> F
+
+    F{secret_token set?} -- yes --> G{token matches?}
+    F -- no --> J
+
+    G -- no --> H([InvalidToken])
+    G -- yes --> J
+
+    J{Body empty?} -- yes --> K([InvalidPayload])
+    J -- no --> L{application/json?}
+
+    L -- yes --> M{JSON parseable?}
+    L -- no --> P[plain text]
+
+    M -- no --> N([MalformedJSON])
+    M -- yes --> P
+
+    P --> Q([WebhookPayload])
+```
